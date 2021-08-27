@@ -48,7 +48,7 @@ const Home = () => {
             </div>
             {/* More About Us Button */}
             <div className="mt-8 w-full flex justify-center">
-                <div className="rounded-md shadow w-full lg:w-1/4">
+                <div className="rounded-md shadow w-full md:w-1/3">
                     <Link to="/about" className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
                     More About Us
                     </Link>
@@ -64,7 +64,7 @@ const Home = () => {
             </div>
             <a href="https://gasappliancespecialists.nz/" target="new"><img src={GasAppLogo} alt="Gas Appliance Specialsts Logo" className="h-auto rounded-md hover:shadow-md"/></a>
             <div className="mt-8 w-full flex justify-center">
-                <div className="rounded-md shadow w-full lg:w-1/4">
+                <div className="rounded-md shadow w-full md:w-1/3">
                     <Link to="/about" className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
                     More About Sponsorships
                     </Link>
