@@ -3,28 +3,30 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
+
 const navigation = [
   {
     name: "About",
-    href: "#",
+    href: "/about",
     current: false,
     isMenu: true,
     childItems: [
-      {name: "AboutDrop1", href: "#"},
-      {name: "AboutDrop2", href: "#"},
-      {name: "AboutDrop3", href: "#"}
+      {name: "History", href: "/about#history"},
+      {name: "Teams", href: "/about#teams"},
+      {name: "Awards", href: "/about#awards"},
+      {name: "VEX", href: "/about#vex"}
     ],
   },
-  { name: "Media", href: "#", current: false, isMenu: false },
+  { name: "Media", href: "/media", current: false, isMenu: false },
   {
     name: "Resources",
-    href: "#",
+    href: "/resources",
     current: false,
     isMenu: true,
     childItems: [
-      {name: "MediaDrop1", href: "#"},
-      {name: "MediaDrop2", href: "#"},
-      {name: "MediaDrop3", href: "#"}
+      {name: "Programming Resources", href: "#"},
+      {name: "Build Resources", href: "#"},
+      {name: "Tips and Tricks", href: "#"}
     ],
   },
   { name: "Sponsorship", href: "#", current: false, isMenu: false },
@@ -36,7 +38,7 @@ function classNames(...classes) {
 
 const Navbar = () => {
   return (
-    <Disclosure as="nav" className="bg-gray-900 fixed w-screen">
+    <Disclosure as="nav" className="bg-gray-900 fixed w-screen shadow-2xl">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -54,7 +56,7 @@ const Navbar = () => {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
                 <div className="flex-shrink-0 flex items-center lg:self-start">
-                  <img className="block h-8 w-auto" src={logo} alt="Workflow" />
+                  <Link to="/"><img className="block h-8 w-auto" src={logo} alt="2915" /></Link>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
