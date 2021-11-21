@@ -1,5 +1,5 @@
 import Logo from "../media/images/logo-2915-blue.png";
-import { ChevronDownIcon, MenuIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/outline";
 
 const navigation = [
 	{ name: "Home", href: "/home", isMenu: false },
@@ -42,7 +42,7 @@ function Navbar() {
           	if (item.isMenu) {
 				return (
 					<li className="group mx-3">
-						<a href="#" className="hover:text-blue-600 inline-flex items-center">
+						<a href={item.href} className="hover:text-blue-600 inline-flex items-center">
 							{item.name}
 							<ChevronDownIcon className="h-5 w-5 ml-1 mt-1" />
 						</a>
