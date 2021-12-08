@@ -35,38 +35,37 @@ function classNames(...classes) {
 
 export default function Navbar() {
 
-	const [showLinks, setShowLinks] = useState(false);
+	const [click, setClick] = useState(false);
 
 	return (
 		<>
 		<div className="fixed w-screen bg-white">
-			<div className="p-4 border-b b-gray-400">
-				<div className="grid grid-flow-col justify-between">
+			<div className="p-4 border-b b-gray-400 md:grid grid-flow-col justify-between">
+				<div className="grid grid-flow-col justify-between md:block">
 					{/* team logo */}
 					<img src={Logo} className="block h-8" alt="LCR 2915 Logo" />
 					{/* Hamburger Menu */}
-					<button onClick={() => setShowLinks(!showLinks)} className="md:hidden">
+					<button onClick={() => setClick(!click)} className="md:hidden">
 						<MenuIcon className="h-8 text-gray-700"/>
 					</button>
 				</div>
-			</div>
 			<div className="">
 					{/* navbar items */}
-					<ul className={classNames( showLinks ? "hidden" : "text-gray-700 text-lg mt-3 border-b b-gray-400 px-4 pb-4 shadow-md")}>
+					<ul className={classNames( click ? "text-gray-700 text-lg mt-3 md:grid grid-flow-col content-center md:m-0" : "sm:hidden md:grid grid-flow-col content-center md:m-0")}>
 					{
 						navigation.map((item) => {
 						// render dropdowns
 						if (item.isMenu) {
 							return (
-								<li className="py-3">
-									<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full">
+								<li className="py-3 md:p-0 md:mx-3 group">
+									<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full hover:text-blue-600 md:inline-flex items-center md:text-gray-700 md:font-normal">
 										{item.name}
 										<ChevronDownIcon className="sm:hidden h-5 w-5 ml-1 mt-1"/>
 									</a>
-									<ul className="">
+									<ul className="sm:block md:hidden group-hover:block md:absolute md:shadow md:bg-white md:rounded md:py-2 md:text-base">
 									{item.childItems.map((cItem) => (
-										<li className="py-2">
-											<a className="inline-block w-full" href={cItem.href}>{cItem.name}</a>
+										<li className="py-2  hover:text-blue-600 hover:bg-gray-200 md:p-0">
+											<a className="inline-block w-full md:block md:py-1 md:px-4" href={cItem.href}>{cItem.name}</a>
 										</li>
 									))}
 									</ul>
@@ -75,8 +74,8 @@ export default function Navbar() {
 					} 
 					else {
 						return (
-						<li className="py-3">
-							<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full">
+						<li className="py-3 md:p-0 md:mx-3 hover:text-blue-600">
+							<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full hover:text-blue-600 md:block md:text-gray-700 md:font-normal">
 								{item.name}
 							</a>
 						</li>
@@ -84,6 +83,7 @@ export default function Navbar() {
 					}
 					})}
 					</ul>
+				</div>
 				</div>
 		</div>
 		</>
