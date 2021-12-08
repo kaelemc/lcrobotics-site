@@ -1,5 +1,6 @@
+import React, { useState } from "react";
 import Logo from "../media/images/logo-2915-blue.png";
-import { ChevronDownIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, MenuIcon } from "@heroicons/react/outline";
 
 const navigation = [
 	{ name: "Home", href: "/home", isMenu: false },
@@ -28,76 +29,63 @@ const navigation = [
 	{ name: "Sponsorship", href: "#", isMenu: false },
 ];
 
-function Navbar() {
-  return (
-    <div className="flex justify-center py-4 border-b b-gray-400 fixed w-screen bg-white">
-		<div className="grid grid-flow-row grid-rows-1 content-center justify-between justify-items-center md:grid-flow-col w-8/12">
-      	{/* team logo */}
-      	<img src={Logo} className="block h-8 w-auto mb-4 md:mb-0" alt="LCR 2915 Logo" />
-      	{/* navbar items */}
-      	<ul className="grid grid-flow-col content-center text-gray-700 font-medium text-lg">
-        {
-			navigation.map((item) => {
-          	// render dropdowns
-          	if (item.isMenu) {
-				return (
-					<li className="group mx-3">
-						<a href={item.href} className="hover:text-blue-600 inline-flex items-center">
-							{item.name}
-							<ChevronDownIcon className="h-5 w-5 ml-1 mt-1" />
-						</a>
-						<ul className="hidden group-hover:block absolute shadow bg-white rounded py-2 text-base">
-						{item.childItems.map((cItem) => (
-							<li className=" hover:text-blue-600 hover:bg-gray-200">
-								<a className="block py-1 px-4" href={cItem.href}>{cItem.name}</a>
-							</li>
-						))}
-						</ul>
-					</li>
-				);
-          } 
-		  else {
-            return (
-			<li className="mx-3 hover:text-blue-600">
-				<a href={item.href} className="hover:text-blue-600">
-					{item.name}
-				</a>
-			</li>
-            );
-          }
-        })}
-
-        {/* <li className="mx-3 hover:text-blue-600"><a href="#" className="hover:text-blue-600">Home</a></li>
-                <li className="group mx-3">
-                    <a href="#" className="hover:text-blue-600 inline-flex items-center">
-                            About
-                            <ChevronDownIcon className="h-5 w-5 ml-1 mt-1"/>
-                    </a>
-                    <ul className="hidden group-hover:block absolute shadow bg-white rounded py-2 text-base">
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Subink 1</a></li>
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Sublink 2</a></li>
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Sublink 3</a></li>
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Sublink 4</a></li>
-                    </ul>
-                </li>
-                <li className="mx-3 hover:text-blue-600"><a href="#" className="hover:text-blue-600">Media</a></li>
-                <li className="group mx-3">
-                    <a href="#" className="hover:text-blue-600 inline-flex items-center">
-                        Resources
-                        <ChevronDownIcon className="h-5 w-5 ml-1 mt-1"/>
-                    </a>
-                    <ul className="hidden group-hover:block absolute shadow bg-white rounded py-2 text-base">
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Subink 1</a></li>
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Sublink 2</a></li>
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Sublink 3</a></li>
-                        <li className="py-1 px-4 hover:text-blue-600 hover:bg-gray-200"><a href="#">Sublink 4</a></li>
-                    </ul>
-                </li>
-                <li className="mx-3 hover:text-blue-600"><a href="#" className="hover:text-blue-600">Sponsorship</a></li> */}
-      </ul>
-	  </div>
-    </div>
-  );
+function classNames(...classes) {
+	return classes.filter(Boolean).join(" ")
 }
 
-export default Navbar;
+export default function Navbar() {
+
+	const [showLinks, setShowLinks] = useState(false);
+
+	return (
+		<>
+		<div className="fixed w-screen bg-white">
+			<div className="p-4 border-b b-gray-400">
+				<div className="grid grid-flow-col justify-between">
+					{/* team logo */}
+					<img src={Logo} className="block h-8" alt="LCR 2915 Logo" />
+					{/* Hamburger Menu */}
+					<button onClick={() => setShowLinks(!showLinks)} className="md:hidden">
+						<MenuIcon className="h-8 text-gray-700"/>
+					</button>
+				</div>
+			</div>
+			<div className="">
+					{/* navbar items */}
+					<ul className={classNames( showLinks ? "hidden" : "text-gray-700 text-lg mt-3 border-b b-gray-400 px-4 pb-4 shadow-md")}>
+					{
+						navigation.map((item) => {
+						// render dropdowns
+						if (item.isMenu) {
+							return (
+								<li className="py-3">
+									<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full">
+										{item.name}
+										<ChevronDownIcon className="sm:hidden h-5 w-5 ml-1 mt-1"/>
+									</a>
+									<ul className="">
+									{item.childItems.map((cItem) => (
+										<li className="py-2">
+											<a className="inline-block w-full" href={cItem.href}>{cItem.name}</a>
+										</li>
+									))}
+									</ul>
+								</li>
+							);
+					} 
+					else {
+						return (
+						<li className="py-3">
+							<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full">
+								{item.name}
+							</a>
+						</li>
+						);
+					}
+					})}
+					</ul>
+				</div>
+		</div>
+		</>
+	);
+}
