@@ -39,8 +39,8 @@ export default function Navbar() {
 
 	return (
 		<>
-		<div className="fixed w-screen bg-white">
-			<div className="p-4 border-b b-gray-400 md:grid grid-flow-col justify-between">
+		<div className="md:flex justify-center fixed w-screen bg-white border-b b-gray-400 z-50">
+			<div className="p-4 md:grid grid-flow-col justify-between md:w-8/12">
 				<div className="grid grid-flow-col justify-between md:block">
 					{/* team logo */}
 					<img src={Logo} className="block h-8" alt="LCR 2915 Logo" />
@@ -49,7 +49,6 @@ export default function Navbar() {
 						<MenuIcon className="h-8 text-gray-700"/>
 					</button>
 				</div>
-			<div className="">
 					{/* navbar items */}
 					<ul className={classNames( click ? "text-gray-700 text-lg mt-3 md:grid grid-flow-col content-center md:m-0" : "sm:hidden md:grid grid-flow-col content-center md:m-0")}>
 					{
@@ -84,8 +83,7 @@ export default function Navbar() {
 					})}
 					</ul>
 				</div>
-				</div>
-		</div>
+			</div>
 		</>
 	);
 }
