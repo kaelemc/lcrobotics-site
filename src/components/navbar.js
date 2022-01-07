@@ -3,7 +3,7 @@ import Logo from "../media/images/logo-2915-blue.png";
 import { ChevronDownIcon, MenuIcon } from "@heroicons/react/outline";
 
 const navigation = [
-	{ name: "Home", href: "/home", isMenu: false },
+	{ name: "Home", href: "/", isMenu: false },
 	{
 		name: "About",
 		href: "/about",
