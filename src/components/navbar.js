@@ -10,7 +10,6 @@ const navigation = [
 		isMenu: true,
 		childItems: [
 		{ name: "History", href: "/about#history" },
-		{ name: "Teams", href: "/about#teams" },
 		{ name: "Awards", href: "/about#awards" },
 		{ name: "VEX", href: "/about#vex" },
 		],
