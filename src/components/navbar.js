@@ -39,8 +39,8 @@ export default function Navbar() {
 
 	return (
 		<>
-		<div className="md:flex justify-center fixed w-screen bg-white border-b b-gray-400 z-50">
-			<div className="p-4 md:grid grid-flow-col justify-between md:w-8/12">
+		<div className="fixed w-screen bg-white shadow-sm z-50">
+			<div className="p-4 md:grid grid-flow-col justify-between mx-auto max-w-screen-xl">
 				<div className="grid grid-flow-col justify-between md:block">
 					{/* team logo */}
 					<img src={Logo} className="block h-8" alt="LCR 2915 Logo" />
@@ -50,20 +50,20 @@ export default function Navbar() {
 					</button>
 				</div>
 					{/* navbar items */}
-					<ul className={classNames( click ? "text-gray-700 text-lg mt-3 md:grid grid-flow-col content-center md:m-0" : "sm:hidden md:grid grid-flow-col content-center md:m-0")}>
+					<ul className={classNames( click ? "text-gray-700 text-lg mt-3 md:grid grid-flow-col content-center md:m-0" : "hidden md:grid grid-flow-col content-center md:m-0")}>
 					{
 						navigation.map((item) => {
 						// render dropdowns
 						if (item.isMenu) {
 							return (
 								<li className="py-3 md:p-0 md:mx-3 group">
-									<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full hover:text-blue-600 md:inline-flex items-center md:text-gray-700 md:font-normal">
+									<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full hover:text-blue-600 md:inline-flex items-center md:text-gray-700  md:font-medium md:text-base transition duration-300 ease-in-out">
 										{item.name}
-										<ChevronDownIcon className="sm:hidden h-5 w-5 ml-1 mt-1"/>
+										<ChevronDownIcon className="hidden md:block h-5 w-5 ml-1 mt-1"/>
 									</a>
 									<ul className="sm:block md:hidden group-hover:block md:absolute md:shadow md:bg-white md:rounded md:py-2 md:text-base">
 									{item.childItems.map((cItem) => (
-										<li className="py-2  hover:text-blue-600 hover:bg-gray-200 md:p-0">
+										<li className="py-2 hover:text-blue-600 hover:bg-gray-200 md:py-1 transition duration-300 ease-in-out">
 											<a className="inline-block w-full md:block md:py-1 md:px-4" href={cItem.href}>{cItem.name}</a>
 										</li>
 									))}
@@ -73,8 +73,8 @@ export default function Navbar() {
 					} 
 					else {
 						return (
-						<li className="py-3 md:p-0 md:mx-3 hover:text-blue-600">
-							<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full hover:text-blue-600 md:block md:text-gray-700 md:font-normal">
+						<li className="py-3 md:p-0 md:mx-3">
+							<a href={item.href} className="text-xl text-gray-900 font-semibold inline-block w-full hover:text-blue-600 md:block md:text-gray-700 md:font-medium md:text-base transition duration-300 ease-in-out">
 								{item.name}
 							</a>
 						</li>
