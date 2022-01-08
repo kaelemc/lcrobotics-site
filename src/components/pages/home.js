@@ -63,7 +63,7 @@ export default function Home() {
         <main className="max-w-screen-xl mx-auto">
             {/* hero */}
             <div className="h-screen relative flex items-center md:max-w-screen md:h-auto md:justify-center">
-                    <img className="h-full object-cover md:rounded-xl" src={Team2915U}/>
+                    <img className="h-full object-cover md:rounded-xl" src={Team2915U} alt=""/>
                     <div className="absolute inset-0 bg-blue-600 mix-blend-multiply md:rounded-xl"></div>
                     <div className="absolute mx-5 font-bold text-3xl backdrop-filter md:text-6xl">
                         <div>
