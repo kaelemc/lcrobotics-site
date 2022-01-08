@@ -7,8 +7,8 @@ export default function TemplateLayout(props) {
             <p className="text-lg text-gray-700">{props.tagline}</p>
         </div>
         {/* content section */}
-        <main className="bg-stone-200 h-screen">
-            <div className="max-w-screen-xl mx-auto">
+        <main className="bg-gray-50">
+            <div className="max-w-screen-xl mx-auto px-5 lg:px-0 py-32">
                 {props.children}
             </div>
         </main>
